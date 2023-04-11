@@ -27,7 +27,15 @@ if (process.env.NODE_ENV === 'production') {
   const { mockXHR } = require('../mock')
   mockXHR()
 }
-
+/**
+ * 框架默认点击空白处可关闭弹框，
+ * 此处全局设置对话框属性：即点击空白处不可关闭弹框
+ */ 
+ ElementUI.Dialog.props.closeOnClickModal.default = false
+ // 全局设置MessageBox弹框点击空白处不可关闭
+ ElementUI.MessageBox.setDefaults({
+   closeOnClickModal: false
+ })
 // set ElementUI lang to EN
 Vue.use(ElementUI, { locale })
 // 如果想要中文版 element-ui，按如下方式声明
